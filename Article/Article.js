@@ -112,3 +112,72 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+// Solution
+
+function compCreator (articleTitle, articleDate, pElement1, pElement2, pElement3){
+  let div = document.createElement('div');
+  div.classList.add('article');
+
+  let h2 = document.createElement('h2');
+
+  let p = document.createElement('p');
+  p.classList.add('date');
+
+  let p1 = document.createElement('p');
+  let p2 = document.createElement('p');
+  let p3 = document.createElement('p');
+
+  let span = document.createElement('span');
+  span.classList.add('expandButton');
+
+  div.appendChild(h2);
+  div.appendChild(p);
+  div.appendChild(p1);
+  div.appendChild(p2);
+  div.appendChild(p3);
+  div.appendChild(span);
+
+  h2.textContent = articleTitle;
+  p.textContent = articleDate;
+  p1 = pElement1;
+  p2 = pElement2;
+  p3 = pElement3;
+
+  span.addEventListener('click', (event) => {
+    div.classList.toggle('article-open');
+  })
+
+  return div;
+
+}
+
+
+let articlesDiv = document.querySelector ('.articles');
+
+
+let newArticle = {
+  title: 'Woo',
+  date: 'Jan 1st, 2019',
+  firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+        hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+        Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+  secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+        hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+        hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+        hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+  thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+        Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+        Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+}
+
+
+data.push(newArticle);
+
+
+data.map((el) => {
+  let elComp = compCreator (el.title, el.date, el.firstParagraph, el.secondParagraph, el.thirdParagraph);
+  articlesDiv.appendChild(elComp);
+})
