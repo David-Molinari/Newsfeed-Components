@@ -140,9 +140,11 @@ function compCreator (articleTitle, articleDate, pElement1, pElement2, pElement3
 
   h2.textContent = articleTitle;
   p.textContent = articleDate;
-  p1 = pElement1;
-  p2 = pElement2;
-  p3 = pElement3;
+  p1.textContent = pElement1;
+  p2.textContent = pElement2;
+  p3.textContent = pElement3;
+
+  span.textContent = 'Article Button';
 
   span.addEventListener('click', (event) => {
     div.classList.toggle('article-open');
